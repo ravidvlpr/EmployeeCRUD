@@ -1,0 +1,31 @@
+<div>
+  <nav class="navbar">
+    <input class="form-control" type="text" name="FullName" [(ngModel)]="firstName" (ngModelChange)="Search()"
+      placeholder="Enter full name to search">
+  </nav>
+  <table class="table table-hover">
+    <thead>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Pin</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees | paginate: { id: 'listing_pagination',
+      itemsPerPage: 5,
+      currentPage: page,
+      totalItems: totalRedord }">
+        <!-- <tr *ngFor="let employee of employees"> -->
+        <td (click)="popup(employee)">{{employee.Id}}</td>
+        <td (click)="popup(employee)">{{employee.FullName}}</td>
+        <td (click)="popup(employee)">{{employee.PhoneNumber}}</td>
+        <td (click)="popup(employee)">{{employee.PinNumber}}</td>
+        <td (click)="popup(employee)"><button class="btn btn-danger" (click)="onDelete(employee)">X</button> </td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    <pagination-controls id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event">
+    </pagination-controls>
+  </div>
+</div>

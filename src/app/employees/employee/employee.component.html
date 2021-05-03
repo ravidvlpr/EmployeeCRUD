@@ -1,0 +1,15 @@
+<form #form="ngForm" (submit)="onSubmit(form)">
+    <div class="mb-3">
+      <label class="form-label">Full Name</label>
+      <input name="FullName" #FullName="ngModel" [(ngModel)]="employeeService.formdata.FullName" class="form-control">
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">Phone Number</label>
+      <input name="PhoneNumber" #PhoneNumber="ngModel" [(ngModel)]="employeeService.formdata.PhoneNumber" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label  class="form-label">Pin Number</label>
+        <input name="PinNumber" #PinNumber="ngModel" [(ngModel)]="employeeService.formdata.PinNumber" class="form-control">
+      </div>
+    <button type="submit" class="btn btn-primary">{{employeeService.buttonText}}</button>
+  </form>
