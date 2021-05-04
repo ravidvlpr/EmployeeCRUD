@@ -24,20 +24,18 @@ export class EmployeeService {
 
   insertEmployee(emp:employee)
   {
-    if(this.buttonText=="Update")
+    console.log(emp);
+    if(emp.Id!=null && emp.Id!=0)
     {
-      const index=this.listEmployee.indexOf(emp);
-      this.listEmployee[index].FullName=emp.FullName;
-      this.listEmployee[index].PhoneNumber=emp.PhoneNumber;
-      this.listEmployee[index].PinNumber=emp.PinNumber;
-      return this.formdata;
+      this.listEmployee.splice(this.listEmployee.indexOf(emp),1,emp);
+      
     }
     else{
-      emp.Id=Math.floor(Math.random() * (100 - 1 + 1)) + 1;
+      emp.Id=this.listEmployee.length+1;
       this.listEmployee.push(emp);
       localStorage.setItem("employee",JSON.stringify( this.listEmployee));
       console.log('in save');
-      return this.formdata;
+  
     }
   
   }
@@ -51,10 +49,11 @@ export class EmployeeService {
     console.log(index);
     this.listEmployee.splice(index,1);
     localStorage.setItem("employee",JSON.stringify(this.listEmployee));
+    this.getEmployee();
   }
   editGet(employee:employee)
   {
     this.buttonText="Update";
-     this.formdata=employee;
+     this.formdata=Object.assign({},employee);
   }
 }

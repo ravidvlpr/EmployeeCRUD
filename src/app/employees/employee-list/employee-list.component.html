@@ -1,5 +1,5 @@
-<div>
-  <nav class="navbar">
+<div *ngIf="employees.length>0">
+  <nav >
     <input class="form-control" type="text" name="FullName" [(ngModel)]="firstName" (ngModelChange)="Search()"
       placeholder="Enter full name to search">
   </nav>

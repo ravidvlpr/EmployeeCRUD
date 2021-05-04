@@ -21,11 +21,7 @@ export class EmployeeComponent implements OnInit {
   }
   resetForm(form?:NgForm)
   {
-    if (form != null)
-    {
-      form.resetForm();
-    }
-    
+
     this.employeeService.formdata={
       Id:0,
       FullName:'',
@@ -36,7 +32,17 @@ export class EmployeeComponent implements OnInit {
   onSubmit(form:NgForm)
   {
     this.employeeService.insertEmployee(form.value);
-    this.toastr.success('Inserted successfully',"EMP. Register");
+    if(form.value.Id==null)
+    {
+      this.resetForm();
+      this.toastr.success('Inserted successfully',"EMP. Register");
+    }
+    else
+    {
+      this.resetForm();
+      this.toastr.warning('Update successfully',"EMP. Register");
+    }
+    
   }
 
 }

@@ -1,7 +1,9 @@
 <form #form="ngForm" (submit)="onSubmit(form)">
+  <input type="hidden" name="Id" #Id="ngModel" [(ngModel)]="employeeService.formdata.Id">
     <div class="mb-3">
       <label class="form-label">Full Name</label>
-      <input name="FullName" #FullName="ngModel" [(ngModel)]="employeeService.formdata.FullName" class="form-control">
+      <input name="FullName" #FullName="ngModel" [(ngModel)]="employeeService.formdata.FullName" class="form-control" required>
+      <div class="validate-error" *ngIf="FullName.invalid && FullName.touched"> Full Name field required </div>
     </div>
     <div class="mb-3">
       <label  class="form-label">Phone Number</label>
@@ -11,5 +13,5 @@
         <label  class="form-label">Pin Number</label>
         <input name="PinNumber" #PinNumber="ngModel" [(ngModel)]="employeeService.formdata.PinNumber" class="form-control">
       </div>
-    <button type="submit" class="btn btn-primary">{{employeeService.buttonText}}</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!form.form.valid">{{employeeService.buttonText}}</button>
   </form>
