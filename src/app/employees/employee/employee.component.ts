@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { from } from 'rxjs';
 import { EmployeeService } from '../../shared/employee.service';
 
@@ -11,7 +12,7 @@ import { EmployeeService } from '../../shared/employee.service';
 })
 export class EmployeeComponent implements OnInit {
 
-  constructor(public employeeService:EmployeeService) { 
+  constructor(public employeeService:EmployeeService, private toastr : ToastrService) { 
    
   }
 
@@ -35,6 +36,7 @@ export class EmployeeComponent implements OnInit {
   onSubmit(form:NgForm)
   {
     this.employeeService.insertEmployee(form.value);
+    this.toastr.success('Inserted successfully',"EMP. Register");
   }
 
 }

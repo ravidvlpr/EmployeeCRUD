@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { employee } from 'src/app/shared/Employee.model';
 import { EmployeeService } from 'src/app/shared/employee.service';
 
@@ -13,7 +14,7 @@ export class EmployeeListComponent implements OnInit {
   totalRedord:Number;
   page:Number=1;
   employees:employee[];
-  constructor(private employeeService:EmployeeService) { }
+  constructor(private employeeService:EmployeeService,private toastr:ToastrService) { }
 
   ngOnInit(): void {
    this.employees= this.employeeService.getEmployee();
@@ -22,6 +23,7 @@ export class EmployeeListComponent implements OnInit {
   onDelete(employee:employee)
   {
     this.employeeService.deleteEmployee(employee);   
+    this.toastr.warning('Delete successfully','EMP register');
   }
   popup(employee:employee)
   {

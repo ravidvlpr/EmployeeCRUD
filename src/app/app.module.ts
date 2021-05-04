@@ -3,7 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination'
 import { Ng2OrderModule } from 'ng2-order-pipe'
-// import { Ng2SearchPipe } from 'ng2-search-filter';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,7 +25,10 @@ import { EmployeeListComponent } from './Employees/employee-list/employee-list.c
     AppRoutingModule,
     FormsModule,
     NgxPaginationModule,
-    Ng2OrderModule
+    Ng2OrderModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
+    
     // ,
     // Ng2SearchPipe
 
