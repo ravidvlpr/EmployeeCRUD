@@ -22,8 +22,12 @@ export class EmployeeListComponent implements OnInit {
   }
   onDelete(employee:employee)
   {
-    this.employeeService.deleteEmployee(employee);   
-    this.toastr.warning('Delete successfully','EMP register');
+    if(confirm('Are you sure to delete this record?'))
+    {
+      this.employeeService.deleteEmployee(employee);   
+      this.toastr.warning('Delete successfully','EMP register');
+    }
+
   }
   popup(employee:employee)
   {
